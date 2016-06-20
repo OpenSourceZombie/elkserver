@@ -1,0 +1,16 @@
+---
+
+- name: Add logstash repo key
+  apt_repository: filename=logstash.list repo="{{elk_logstash.repo}}" validate_certs=yes
+
+- name: Install logstash
+  package: name=logstash state=latest
+
+- name: Logstash conf files
+  template:
+    src="{{ item.src }}"
+    dest=/etc/logstash/conf.d/{{ item.dest }}
+    owner=root group=root mode=644
+  with_items: "{{elk_logstash.configs}}"
+  notify: Restart logstash
+

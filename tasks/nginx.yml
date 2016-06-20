@@ -1,0 +1,14 @@
+---
+- name: Install Nginx
+  package: name=nginx state=latest
+
+- name: Generate kibana htpassword
+  shell:
+    echo "{{ elk_kibana.user }}:$(openssl passwd -crypt {{ elk_kibana.password }}):kibana" |tee .kibana.htpasswd
+  args:
+    chdir: /etc/nginx/conf.d
+    creates: /etc/nginx/conf.d/.kibana.htpasswd
+
+- name: Copy vhost template
+  template: src=nginx-vhost.conf dest=/etc/nginx/sites-enabled/elk.conf
+  notify: Restart Nginx 

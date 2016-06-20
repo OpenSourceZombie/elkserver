@@ -1,0 +1,11 @@
+---
+
+- name: Add Kibana repo
+  apt_repository: repo="{{ elk_kibana.repo  }}" state=present validate_certs=yes
+
+- name: Install Kibana
+  package: name=kibana state=latest
+
+- name: Copy Kibana templates
+  template: src=kibana.yml dest=/opt/kibana/config/kibana.yml backup=yes
+  notify: Restart Kibana

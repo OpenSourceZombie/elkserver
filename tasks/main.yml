@@ -1,0 +1,24 @@
+---
+# tasks file for theShirbiny.elkserver
+- name: Include all vars
+  include_vars: main.yml
+
+- name: Trusting elk repo key
+  apt_key: url="{{ elk.key }}" validate_certs=yes state=present
+
+- name: Install Packages
+  include: packages.yml
+
+- name: Install logshash
+  include: logstash.yml 
+
+- name: Install Nginx
+  include: nginx.yml
+
+- name: Install Elasticsearch
+  include: elasticsearch.yml
+
+- name: Install Kibana
+  include: kibana.yml
+
+

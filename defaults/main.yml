@@ -1,0 +1,31 @@
+---
+# defaults file for theShirbiny.elkserver
+
+elk:
+  key: "https://packages.elastic.co/GPG-KEY-elasticsearch"
+
+elk_logstash:
+  port: 5044
+  repo: "deb http://packages.elastic.co/logstash/2.2/debian stable main"
+  configs:
+    - { src: logstash-input.conf.j2, dest: 02-beats-input.conf  }
+    - { src: logstash-filter.conf.j2, dest: 10-syslog-filter.conf  }
+    - { src: logstash-output.conf.j2, dest: 30-elasticsearch-output.conf  }
+
+
+elk_elasticsearch:
+  repo: "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main"
+  port: 9200
+
+
+elk_kibana:
+  repo: "deb http://packages.elastic.co/kibana/4.4/debian stable main"
+  port: 5601
+  user: kibana
+  password: kibana
+
+elk_nginx:
+  port: 80
+  user: nginx
+  hostname: elk.local.com
+

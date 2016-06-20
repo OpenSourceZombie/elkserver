@@ -1,0 +1,8 @@
+input {
+  beats {
+    port => {{elk_logstash.port}}
+    ssl => false #for now
+#    ssl_certificate => "/etc/pki/tls/certs/logstash-forwarder.crt"
+#    ssl_key => "/etc/pki/tls/private/logstash-forwarder.key"
+  }
+}

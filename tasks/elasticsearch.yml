@@ -1,0 +1,11 @@
+---
+
+- name: Add elasticsearch repo
+  apt_repository: filename=elasticsearch.list repo="{{elk_elasticsearch.repo}}" validate_certs=yes
+
+- name: Install elasticsearch
+  package: name=elasticsearch state=latest
+
+- name: Copy elasticsearch templates
+  template: src=elasticsearch.yml dest=/etc/elasticsearch/elasticsearch.yml backup=yes
+  notify: Restart Elasticsearch
