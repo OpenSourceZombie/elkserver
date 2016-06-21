@@ -12,5 +12,4 @@
     dest=/etc/logstash/conf.d/{{ item.dest }}
     owner=root group=root mode=644
   with_items: "{{elk_logstash.configs}}"
-  notify: Restart logstash
-
+  notify: Restart Logstash

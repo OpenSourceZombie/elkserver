@@ -4,3 +4,4 @@ elk_pkgs:
   - openjdk-7-jre-headless
   - python-passlib
   - python-apt
+  - unzip

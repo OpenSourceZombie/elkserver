@@ -9,3 +9,10 @@
 - name: Copy Kibana templates
   template: src=kibana.yml dest=/opt/kibana/config/kibana.yml backup=yes
   notify: Restart Kibana
+
+- name: Download and unpack Kibana beats dashboard
+  unarchive: src="{{elk_kibana.dashboard }}" dest=/usr/local/src copy=no
+
+- name: Load ES beats Indexes
+  command: "/usr/local/src/{{ elk_kibana.dashboard.split('/') | last  | splitext | first  }}/load.sh"
+

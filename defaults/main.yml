@@ -20,6 +20,7 @@ elk_elasticsearch:
 
 elk_kibana:
   repo: "deb http://packages.elastic.co/kibana/4.4/debian stable main"
+  dashboard: "https://download.elastic.co/beats/dashboards/beats-dashboards-1.1.0.zip"
   port: 5601
   user: kibana
   password: kibana
