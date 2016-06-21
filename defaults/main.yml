@@ -28,4 +28,4 @@ elk_nginx:
   port: 80
   user: nginx
   hostname: elk.local.com
-
+  auth: /etc/nginx/conf.d/.kibana.htpasswd

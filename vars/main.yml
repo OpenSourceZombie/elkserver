@@ -2,3 +2,4 @@
 # vars file for theShirbiny.elkserver
 elk_pkgs:
   - openjdk-7-jre-headless
+  - python-passlib
