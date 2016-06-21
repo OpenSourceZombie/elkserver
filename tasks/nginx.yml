@@ -3,7 +3,7 @@
   package: name=nginx state=latest
 
 - name: Create basic auth
-  htpasswd: path="{{elk_nginx.auth}}" name="{{ elk_nginx.user }}" password="{{elk_kibana.password}}"
+  htpasswd: path="{{elk_nginx.auth}}" name="{{ elk_kibana.user }}" password="{{elk_kibana.password}}"
 
 - name: Copy vhost template
   template: src=nginx-vhost.conf dest=/etc/nginx/sites-enabled/elk.conf
