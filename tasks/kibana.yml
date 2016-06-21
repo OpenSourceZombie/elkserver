@@ -1,7 +1,7 @@
 ---
 
 - name: Add Kibana repo
-  apt_repository: repo="{{ elk_kibana.repo  }}" state=present validate_certs=yes
+  apt_repository: filename=kibana repo="{{ elk_kibana.repo  }}" state=present validate_certs=yes mode=644
 
 - name: Install Kibana
   package: name=kibana state=latest

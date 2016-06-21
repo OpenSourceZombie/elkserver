@@ -1,7 +1,7 @@
 ---
 
 - name: Add elasticsearch repo
-  apt_repository: filename=elasticsearch.list repo="{{elk_elasticsearch.repo}}" validate_certs=yes
+  apt_repository: filename=elasticsearch repo="{{elk_elasticsearch.repo}}" validate_certs=yes mode=644
 
 - name: Install elasticsearch
   package: name=elasticsearch state=latest

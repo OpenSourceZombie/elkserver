@@ -1,7 +1,7 @@
 ---
 
-- name: Add logstash repo key
-  apt_repository: filename=logstash.list repo="{{elk_logstash.repo}}" validate_certs=yes
+- name: Add logstash repo
+  apt_repository: filename=logstash repo="{{elk_logstash.repo}}" validate_certs=yes mode=644
 
 - name: Install logstash
   package: name=logstash state=latest
