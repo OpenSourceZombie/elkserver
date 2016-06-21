@@ -18,5 +18,7 @@
 - wait_for: port="{{elk_elasticsearch.port}}" delay=10 # wait for elasticsearch to work
  
 - name: Load ES beats Indexes
-  command: "/usr/local/src/{{ elk_kibana.dashboard.split('/') | last  | splitext | first  }}/load.sh"
+  shell: ./load.sh
+  args:
+    chdir: "/usr/local/src/{{ elk_kibana.dashboard.split('/') | last  | splitext | first  }}"
 
